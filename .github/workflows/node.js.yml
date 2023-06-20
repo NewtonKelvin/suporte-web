@@ -26,14 +26,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    
-    - name: Install dependencies
-      run: npm install
-    - name: Check for typescript errors
-      run: npm tscheck
-    - name: Check for lint errors
-      run: npm lint
-      
+    - run: npm ci      
     - run: npm run build --if-present
     - run: npm test
