@@ -13,7 +13,7 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     console.log("rendered");
     if (cookies.theme && cookies.theme !== undefined && cookies.theme !== null)
       dispatch(setTheme(cookies.theme));
-  });
+  }, []);
   return (
     <div className={theme}>
       <div
