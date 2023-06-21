@@ -18,9 +18,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const muiEnv =
-    process.env.NODE_ENV === "development" ? "development" : "production";
-
   return (
     <html lang="pt-BR" className={poppins.className}>
       <head>
@@ -34,10 +31,6 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
-        <script
-          async
-          src={`https://unpkg.com/@mui/material@latest/umd/material-ui.${muiEnv}.js`}
-        ></script>
       </head>
 
       <body>
