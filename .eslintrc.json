@@ -1,6 +1,6 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "plugin:storybook/recommended"
-  ]
+  "rules": {
+    "no-unused-vars": "warn"
+  },
+  "extends": ["next/core-web-vitals", "plugin:storybook/recommended"]
 }

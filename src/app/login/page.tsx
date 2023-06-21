@@ -1,7 +1,12 @@
-"use client";
 import CustomSwitch from "@/components/switch";
+import { Metadata } from "next";
 
-const page = () => {
+export const metadata: Metadata = {
+  title: "Login",
+  description: "Lorem ipsum dolor sit amet",
+};
+
+const Page = () => {
   return (
     <>
       <span>Login page</span>
@@ -10,4 +15,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

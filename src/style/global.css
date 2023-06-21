@@ -2,28 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --primary: rgba(10, 132, 255, 1);
-    /*--fade: rgba(64, 200, 224, 1) - rgba(10, 132, 255, 1)*/
-    --container: rgba(255, 255, 255, 1);
-    --box: rgba(90, 90, 90, 1);
-    --input: rgba(229, 229, 229, 1);
-    --text: rgba(0, 0, 0, 1);
-    --text-opacity: rgba(128, 128, 128, 1);
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --primary: rgba(10, 132, 255, 1);
-        /*--fade: rgba(64, 200, 224, 1) - rgba(10, 132, 255, 1)*/
-        --container: rgba(21, 23, 24, 1);
-        --box: rgba(90, 90, 90, 1);
-        --input: rgba(29, 31, 32, 1);
-        --text: rgba(255, 255, 255, 1);
-        --text-opacity: rgba(109, 109, 109, 1);
-    }
-}
-
 * {
     box-sizing: border-box;
     padding: 0;
