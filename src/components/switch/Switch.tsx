@@ -1,12 +1,14 @@
 "use client";
-import { RootState } from "@/app/store";
-import { toggleTheme } from "@/redux/cookies/slice";
 import styled from "@emotion/styled";
 import { Typography } from "@mui/material";
 import Switch from "@mui/material/Switch";
-import { useDispatch, useSelector } from "react-redux";
 
-const CustomSwitch = () => {
+type CustomSwitchType = {
+  checked: boolean;
+  onChange: () => void;
+};
+
+const CustomSwitch = ({ checked, onChange }: CustomSwitchType) => {
   const AntSwitch = styled(Switch)(() => ({
     width: 28,
     height: 16,
@@ -45,19 +47,19 @@ const CustomSwitch = () => {
     },
   }));
 
-  const theme = useSelector((state: RootState) => state.cookies.theme);
-  const dispatch = useDispatch();
+  const toggleTheme = () => {
+    onChange();
+  };
 
   return (
     <>
       <Typography>Ligth</Typography>
       <AntSwitch
-        checked={theme === "dark"}
-        onChange={() => dispatch(toggleTheme())}
+        checked={checked}
+        onChange={toggleTheme}
         inputProps={{ "aria-label": "ant design" }}
       />
       <Typography>Dark</Typography>
-      <b>{theme}</b>
     </>
   );
 };

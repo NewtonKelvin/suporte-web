@@ -1,3 +1,4 @@
+"use client";
 import { setTheme } from "@/redux/cookies/slice";
 import { parseCookies } from "nookies";
 import { useEffect } from "react";

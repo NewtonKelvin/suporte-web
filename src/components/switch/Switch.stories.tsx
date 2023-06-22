@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import CustomSwitch from "./index";
+import CustomSwitch from "./Switch";
 
 //👇 This default export determines where your story goes in the story list
 const meta: Meta<typeof CustomSwitch> = {
