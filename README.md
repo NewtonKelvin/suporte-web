@@ -54,3 +54,10 @@ pnpm tscheck
 - [**Material UI:**](https://mui.com/) MUI offers a comprehensive suite of UI tools to help you ship new features faster. Start with Material UI, our fully-loaded component library, or bring your own design system to our production-ready components.
 - [**ESLint:**](https://eslint.org/) ESLint statically analyzes your code to quickly find problems. It is built into most text editors and you can run ESLint as part of your continuous integration pipeline.
 - [**Redux Toolkit:**](https://redux-toolkit.js.org/) Redux helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test. Centralizing your application's state and logic enables powerful capabilities like undo/redo, state persistence, and much more.
+
+## OBS.:
+- [X] Utilização de `use client` em `app/layout.tsx`
+- [X] Estudar `server component` e `client component`
+- [ ] Tema da aplicação no Storybook
+- [ ] Inserir comando para o prettier
+- [ ] Ajustar o título/descrição das páginas

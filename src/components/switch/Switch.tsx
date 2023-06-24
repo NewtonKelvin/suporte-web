@@ -4,11 +4,18 @@ import { Typography } from "@mui/material";
 import Switch from "@mui/material/Switch";
 
 type CustomSwitchType = {
+  leftValue: string;
+  rigthValue: string;
   checked: boolean;
   onChange: () => void;
 };
 
-const CustomSwitch = ({ checked, onChange }: CustomSwitchType) => {
+const CustomSwitch = ({
+  leftValue,
+  rigthValue,
+  checked,
+  onChange,
+}: CustomSwitchType) => {
   const AntSwitch = styled(Switch)(() => ({
     width: 28,
     height: 16,
@@ -52,15 +59,15 @@ const CustomSwitch = ({ checked, onChange }: CustomSwitchType) => {
   };
 
   return (
-    <>
-      <Typography>Ligth</Typography>
+    <div className="flex flex-row items-center gap-2">
+      <Typography className="font-bold">{leftValue}</Typography>
       <AntSwitch
         checked={checked}
         onChange={toggleTheme}
         inputProps={{ "aria-label": "ant design" }}
       />
-      <Typography>Dark</Typography>
-    </>
+      <Typography className="font-bold">{rigthValue}</Typography>
+    </div>
   );
 };
 

@@ -1,20 +1,20 @@
-"use client";
 import { Poppins } from "next/font/google";
-import { Provider } from "react-redux";
 import "../style/global.css";
-import { store } from "./store";
-import ThemeProvider from "./theme";
-require("dotenv").config();
+import GlobalProvider from "./store-provider";
+
+export const metadata = {
+  title: "Nest suporte"
+};
 
 const poppins = Poppins({
-  weight: ["100", "400", "700"],
+  weight: ["100", "400", "700", "900"],
   style: ["normal", "italic"],
   display: "swap",
-  subsets: ["latin"],
+  subsets: ["latin"]
 });
 
 export default function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode;
 }) {
@@ -32,11 +32,8 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
       </head>
-
       <body>
-        <Provider store={store}>
-          <ThemeProvider>{children}</ThemeProvider>
-        </Provider>
+        <GlobalProvider>{children}</GlobalProvider>
       </body>
     </html>
   );
