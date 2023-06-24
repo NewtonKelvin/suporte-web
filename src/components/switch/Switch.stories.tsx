@@ -12,7 +12,7 @@ type Story = StoryObj<typeof CustomSwitch>;
 
 export const Default: Story = {
   args: {
-    leftValue: "Ligth",
-    rigthValue: "Dark"
+    deactive: "Ligth",
+    active: "Dark"
   }
 };

@@ -12,7 +12,18 @@ module.exports = {
         xs: "0px",
         sm: "600px",
         md: "900px",
-        xl: "1200px"
+        lg: "1200px",
+        xl: "1536px"
+      },
+      colors: {
+        primary: "#0A84FF",
+        "opacity-ligth": "#808080",
+        "opacity-dark": "#5a5a5a",
+        white: "#D9D9D9",
+        "primary-ligth": "#000000",
+        "primary-dark": "#FFFFFF",
+        "container-ligth": "#FFFFFF",
+        "container-dark": "#151718"
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

@@ -4,15 +4,15 @@ import { Typography } from "@mui/material";
 import Switch from "@mui/material/Switch";
 
 type CustomSwitchType = {
-  leftValue: string;
-  rigthValue: string;
+  deactive: React.ReactNode | string;
+  active: React.ReactNode | string;
   checked: boolean;
   onChange: () => void;
 };
 
 const CustomSwitch = ({
-  leftValue,
-  rigthValue,
+  deactive,
+  active,
   checked,
   onChange
 }: CustomSwitchType) => {
@@ -60,13 +60,13 @@ const CustomSwitch = ({
 
   return (
     <div className="flex flex-row items-center gap-2">
-      <Typography className="font-bold">{leftValue}</Typography>
+      <Typography className="font-bold">{deactive}</Typography>
       <AntSwitch
         checked={checked}
         onChange={toggleTheme}
         inputProps={{ "aria-label": "ant design" }}
       />
-      <Typography className="font-bold">{rigthValue}</Typography>
+      <Typography className="font-bold">{active}</Typography>
     </div>
   );
 };

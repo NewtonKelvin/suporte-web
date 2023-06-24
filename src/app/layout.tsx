@@ -7,7 +7,7 @@ export const metadata = {
 };
 
 const poppins = Poppins({
-  weight: ["100", "400", "700", "900"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   style: ["normal", "italic"],
   display: "swap",
   subsets: ["latin"]

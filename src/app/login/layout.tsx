@@ -12,7 +12,7 @@ export default function RootLayout({
         item
         sm={12}
         md={6}
-        className="w-float h-float rounded-md py-4 px-16 bg-white dark:bg-neutral-900 text-black dark:text-white flex flex-col"
+        className="w-float h-float rounded-md sm:px-16 sm:py-1 p-2 bg-container-ligth dark:bg-container-dark text-black dark:text-white flex flex-col"
       >
         {children}
       </Grid>
@@ -20,7 +20,7 @@ export default function RootLayout({
         item
         sm={12}
         md={6}
-        className="w-float h-float rounded-md py-4 px-16 hidden md:flex flex-col text-justify justify-center my-auto text-black dark:text-white"
+        className="w-float h-float rounded-md sm:px-16 sm:py-1 p-2 hidden md:flex flex-col text-justify justify-center my-auto text-black dark:text-white"
       >
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur

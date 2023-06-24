@@ -54,10 +54,14 @@ pnpm tscheck
 - [**Material UI:**](https://mui.com/) MUI offers a comprehensive suite of UI tools to help you ship new features faster. Start with Material UI, our fully-loaded component library, or bring your own design system to our production-ready components.
 - [**ESLint:**](https://eslint.org/) ESLint statically analyzes your code to quickly find problems. It is built into most text editors and you can run ESLint as part of your continuous integration pipeline.
 - [**Redux Toolkit:**](https://redux-toolkit.js.org/) Redux helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test. Centralizing your application's state and logic enables powerful capabilities like undo/redo, state persistence, and much more.
+- [**Prettier:**](https://prettier.io/) Prettier is an opinionated code formatter with support for many languages, it removes all original styling* and ensures that all outputted code conforms to a consistent style. (See this blog post)
+- [**Nookies:**](https://www.npmjs.com/package/nookies) A collection of cookie helpers for Next.js
 
-## OBS.:
+
+## Tarefas
+
 - [X] Utilização de `use client` em `app/layout.tsx`
 - [X] Estudar `server component` e `client component`
+- [x] Inserir comando para o prettier
 - [ ] Tema da aplicação no Storybook
-- [ ] Inserir comando para o prettier
-- [ ] Ajustar o título/descrição das páginas
+- [ ] Ajustar o título/descrição das páginas com title layout
