@@ -20,15 +20,11 @@ import { RootState } from "../store";
 
 const loginSchema = z.object({
   login: z
-    .string({
-      required_error: "Login is required"
-    })
+    .string()
     .min(6, "Login must be at least 6 characters")
     .nonempty("Login is required"),
   password: z
-    .string({
-      required_error: "Password is required"
-    })
+    .string()
     .min(6, "Password must be at least 8 characters")
     .nonempty("Password is required")
 });
