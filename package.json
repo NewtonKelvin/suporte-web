@@ -6,8 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "tscheck": "tsc",
+    "lint-next": "next lint",
+    "ts-check": "tsc",
+    "lint-check": "yarn prettier --check \"src/**/*.{ts,tsx}\"",
+    "lint-run": "yarn prettier --write \"src/**/*.{ts,tsx}\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

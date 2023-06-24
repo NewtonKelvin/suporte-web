@@ -8,7 +8,7 @@ type cookieStoreType = {
 
 const initialState: cookieStoreType = {
   theme: "ligth",
-  isDark: false,
+  isDark: false
 };
 
 export const cookieStore = createSlice({
@@ -18,19 +18,19 @@ export const cookieStore = createSlice({
     toggleTheme: (state) => {
       const newTheme = state.theme === "dark" ? "ligth" : "dark";
       setCookie(null, "theme", newTheme, {
-        path: "/",
+        path: "/"
       });
       state.theme = newTheme;
       state.isDark = state.theme === "dark";
     },
     setTheme: (state, action: PayloadAction<string>) => {
       setCookie(null, "theme", action.payload, {
-        path: "/",
+        path: "/"
       });
       state.theme = action.payload;
       state.isDark = action.payload === "dark";
-    },
-  },
+    }
+  }
 });
 
 export const { toggleTheme, setTheme } = cookieStore.actions;
