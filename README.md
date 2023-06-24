@@ -56,6 +56,8 @@ pnpm tscheck
 - [**Redux Toolkit:**](https://redux-toolkit.js.org/) Redux helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test. Centralizing your application's state and logic enables powerful capabilities like undo/redo, state persistence, and much more.
 - [**Prettier:**](https://prettier.io/) Prettier is an opinionated code formatter with support for many languages, it removes all original styling* and ensures that all outputted code conforms to a consistent style. (See this blog post)
 - [**Nookies:**](https://www.npmjs.com/package/nookies) A collection of cookie helpers for Next.js
+- [**React hook form:**](https://react-hook-form.com/) React Hook Form is one such library that helps to manage complex forms. It has excellent performance, is super lightweight, has zero dependencies, can be easily integrated
+- [**Zod:**](https://zod.dev/) od is a TypeScript-first schema declaration and validation library. I'm using the term "schema" to broadly refer to any data type, from a simple string to a complex nested object.
 
 
 ## Tarefas
@@ -63,5 +65,6 @@ pnpm tscheck
 - [X] Utilização de `use client` em `app/layout.tsx`
 - [X] Estudar `server component` e `client component`
 - [x] Inserir comando para o prettier
+- [ ] Formulários avançados
 - [ ] Tema da aplicação no Storybook
 - [ ] Ajustar o título/descrição das páginas com title layout

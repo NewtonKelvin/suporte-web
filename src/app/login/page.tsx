@@ -3,6 +3,7 @@ import Input from "@/components/input/Input";
 import Logo from "@/components/logo/Logo";
 import CustomSwitch from "@/components/switch/Switch";
 import { toggleTheme } from "@/redux/cookies/slice";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   ArrowForward,
   Face,
@@ -12,12 +13,42 @@ import {
 } from "@mui/icons-material";
 import { Typography } from "@mui/material";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
+import { z } from "zod";
 import { RootState } from "../store";
+
+const loginSchema = z.object({
+  login: z
+    .string({
+      required_error: "Login is required"
+    })
+    .min(6, "Login must be at least 6 characters")
+    .nonempty("Login is required"),
+  password: z
+    .string({
+      required_error: "Password is required"
+    })
+    .min(6, "Password must be at least 8 characters")
+    .nonempty("Password is required")
+});
+
+export type LoginType = z.infer<typeof loginSchema>;
 
 const Page = () => {
   const { isDark } = useSelector((state: RootState) => state.cookies);
   const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<LoginType>({
+    resolver: zodResolver(loginSchema)
+  });
+
+  const submitForm = (data: LoginType) => {
+    console.log(data);
+  };
 
   return (
     <>
@@ -40,23 +71,46 @@ const Page = () => {
               Suporte Nest
             </Typography>
           </div>
-          <form className="w-3/4 sm:w-1/2 md:w-3/4 lg:w-1/2 xl:w-1/3 flex flex-col gap-2">
+          <form
+            className="w-3/4 sm:w-1/2 md:w-3/4 lg:w-1/2 xl:w-1/3 flex flex-col gap-2"
+            onSubmit={handleSubmit(submitForm)}
+            noValidate
+          >
             <div className="flex flex-col">
-              <label className="p-2 text-sm font-medium">Login:</label>
-              <Input left={<Face />} type="text" placeholder="teste..." />
-            </div>
-            <div className="flex flex-col">
-              <label className="p-2 text-sm font-medium">Password:</label>
+              <label className="px-2 py-1 m-0 text-sm font-medium">
+                Login:
+              </label>
               <Input
-                left={<Fingerprint />}
-                type="password"
+                register={register("login")}
+                left={<Face />}
+                type="text"
+                id="login"
                 placeholder="teste..."
               />
+              {errors.login && (
+                <span className="text-red-500 px-2 py-1 m-0 text-xs font-medium">
+                  {errors.login.message}
+                </span>
+              )}
+              <label className="p-2 text-sm font-medium">Password:</label>
+              <Input
+                register={register("password")}
+                left={<Fingerprint />}
+                type="password"
+                id="password"
+                placeholder="teste..."
+                autoComplete="off"
+              />
+              {errors.password && (
+                <span className="text-red-500 p-2 m-0 text-xs font-medium">
+                  {errors.password.message}
+                </span>
+              )}
             </div>
 
             <button
               className="flex justify-center items-center bg-primary hover:bg-blue-600 text-primary-dark rounded-lg h-8"
-              type="button"
+              type="submit"
             >
               Entrar
               <ArrowForward className="h-4" />
