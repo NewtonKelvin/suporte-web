@@ -13,7 +13,7 @@ yarn dev
 # or
 pnpm dev
 ```
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You also can run the components library:
 
@@ -24,17 +24,43 @@ yarn storybook
 # or
 pnpm storybook
 ```
-Open [http://localhost:6006](http://localhost:6006) with your browser to see the result.
+> Open [http://localhost:6006](http://localhost:6006) with your browser to see the result.
+
+And also can run Prisma (database) client:
+
+```bash
+npm prisma studio
+# or
+yarn prisma studio
+# or
+pnpm prisma studio
+```
+> Open [http://localhost:5555/](http://localhost:5555/) with your browser to see the result.
 
 ## Utils
-
+Check for lint errors:
+```bash
+npm lint-check
+# or
+yarn lint-check
+# or
+pnpm lint-check
+```
 Lint the code:
 ```bash
-npm lint
+npm lint-run
 # or
-yarn lint
+yarn lint-run
 # or
-pnpm lint
+pnpm lint-run
+```
+Check for typescript errors:
+```bash
+npm tscheck
+# or
+yarn tscheck
+# or
+pnpm tscheck
 ```
 Check for typescript errors:
 ```bash
@@ -59,7 +85,8 @@ pnpm tscheck
 - [**React hook form:**](https://react-hook-form.com/) React Hook Form is one such library that helps to manage complex forms. It has excellent performance, is super lightweight, has zero dependencies, can be easily integrated
 - [**Zod:**](https://zod.dev/) Zod is a TypeScript-first schema declaration and validation library. I'm using the term "schema" to broadly refer to any data type, from a simple string to a complex nested object.
 - [**Prisma:**](https://www.prisma.io/) Prisma unlocks a new level of developer experience when working with databases thanks to its intuitive data model, automated migrations, type-safety & auto-completion.
-
+- [**Json web token:**](https://www.npmjs.com/package/jsonwebtoken) An implementation of JSON Web Tokens.
+- [**BCrypt:**](https://www.npmjs.com/package/bcrypt) A library to help you hash passwords.
 
 ## Tarefas
 
@@ -67,8 +94,9 @@ pnpm tscheck
 - [X] Estudar `server component` e `client component`
 - [x] Inserir comando para o prettier
 - [x] Formulários avançados
-- [ ] Banco de dados com ORM
-- [ ] API's
+- [X] Banco de dados com ORM
+- [X] API's
 - [ ] Autenticação
+- [ ] Implementar testes automatizados
 - [ ] Tema da aplicação no Storybook
 - [ ] Ajustar o título/descrição das páginas com title layout
