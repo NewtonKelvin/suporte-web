@@ -9,3 +9,9 @@ export type authUserRequest = {
   login: string;
   password: string;
 };
+
+export type authUserResponse = {
+  error: boolean;
+  auth: boolean;
+  message?: string;
+};

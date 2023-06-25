@@ -3,6 +3,9 @@ import Input from "@/components/input/Input";
 import Logo from "@/components/logo/Logo";
 import CustomSwitch from "@/components/switch/Switch";
 import { toggleTheme } from "@/redux/cookies/slice";
+import { show } from "@/redux/snackbar/slice";
+import { api } from "@/services/api";
+import { authUserResponse } from "@/types/user";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   ArrowForward,
@@ -12,6 +15,8 @@ import {
   NightsStay
 } from "@mui/icons-material";
 import { Typography } from "@mui/material";
+import { AxiosError } from "axios";
+import "dotenv/config";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
@@ -37,13 +42,36 @@ const Page = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors }
   } = useForm<LoginType>({
     resolver: zodResolver(loginSchema)
   });
 
-  const submitForm = (data: LoginType) => {
-    console.log(data);
+  const submitForm = async ({ login, password }: LoginType) => {
+    await api
+      .get<authUserResponse>("/user", {
+        params: new URLSearchParams({ login, password })
+      })
+      .then(({ data }) => {
+        dispatch(
+          show({
+            type: data.error ? "warning" : "success",
+            title: data.error ? "Login not found" : "Login successfully",
+            details: "Redirecting..."
+          })
+        );
+        reset();
+      })
+      .catch((err: AxiosError<authUserResponse>) => {
+        dispatch(
+          show({
+            type: "error",
+            title: `Login fail: ${err.response?.data.message}`,
+            details: !err.response?.data.message ? err.message : null
+          })
+        );
+      });
   };
 
   return (
@@ -70,6 +98,7 @@ const Page = () => {
           <form
             className="w-3/4 sm:w-1/2 md:w-3/4 lg:w-1/2 xl:w-1/3 flex flex-col gap-2"
             onSubmit={handleSubmit(submitForm)}
+            autoComplete="off"
             noValidate
           >
             <div className="flex flex-col">

@@ -26,7 +26,8 @@ a {
   text-decoration: none;
 }
 
-*.MuiTypography-root {
+*.MuiTypography-root,
+*.MuiAlert-message {
   font-family: 'Poppins', sans-serif;
 }
 

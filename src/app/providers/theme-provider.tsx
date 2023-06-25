@@ -4,16 +4,16 @@ import { CookiesType } from "@/types/cookies";
 import { parseCookies } from "nookies";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "./store";
+import { RootState } from "../store";
 
 const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const cookies: CookiesType = parseCookies();
+  const { theme: cookieTheme }: CookiesType = parseCookies();
   const theme = useSelector((state: RootState) => state.cookies.theme);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (cookies.theme && cookies.theme !== undefined && cookies.theme !== null)
-      dispatch(setTheme(cookies.theme));
+    if (cookieTheme && cookieTheme !== undefined && cookieTheme !== null)
+      dispatch(setTheme(cookieTheme));
   });
 
   return (

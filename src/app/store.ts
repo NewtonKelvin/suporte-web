@@ -1,9 +1,11 @@
 import cookieStore from "@/redux/cookies/slice";
+import snackbarStore from "@/redux/snackbar/slice";
 import { configureStore } from "@reduxjs/toolkit";
 
 export const store = configureStore({
   reducer: {
-    cookies: cookieStore
+    cookies: cookieStore,
+    snackbar: snackbarStore
   }
 });
 

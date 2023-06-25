@@ -1,6 +1,7 @@
 import { Poppins } from "next/font/google";
 import "../style/global.css";
-import GlobalProvider from "./store-provider";
+import "../style/nprogress.css";
+import GlobalProvider from "./providers/store-provider";
 
 export const metadata = {
   title: "Nest suporte"

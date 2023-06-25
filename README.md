@@ -87,6 +87,7 @@ pnpm tscheck
 - [**Prisma:**](https://www.prisma.io/) Prisma unlocks a new level of developer experience when working with databases thanks to its intuitive data model, automated migrations, type-safety & auto-completion.
 - [**Json web token:**](https://www.npmjs.com/package/jsonwebtoken) An implementation of JSON Web Tokens.
 - [**BCrypt:**](https://www.npmjs.com/package/bcrypt) A library to help you hash passwords.
+- [**Axios:**](https://axios-http.com/ptbr/docs/intro) Axios is a promise-based HTTP Client for node.js and the browser. It is isomorphic (= it can run in the browser and nodejs with the same codebase). On the server-side it uses the native node.js http module, while on the client (browser) it uses XMLHttpRequests.
 
 ## Tarefas
 
@@ -96,7 +97,9 @@ pnpm tscheck
 - [x] Formulários avançados
 - [X] Banco de dados com ORM
 - [X] API's
+- [X] Carregamento de página
 - [ ] Autenticação
 - [ ] Implementar testes automatizados
-- [ ] Tema da aplicação no Storybook
+- [ ] Skeleton
 - [ ] Ajustar o título/descrição das páginas com title layout
+- [ ] ~~Tema da aplicação no Storybook~~
