@@ -8,18 +8,18 @@ import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 
 const persistConfig = {
-  key: "root",
-  storage
+	key: "root",
+	storage
 };
 const persistedReducer = persistReducer(persistConfig, userStore);
 
 export const store = configureStore({
-  reducer: {
-    cookies: cookieStore,
-    snackbar: snackbarStore,
-    persistedReducer
-  },
-  middleware: [thunk]
+	reducer: {
+		cookies: cookieStore,
+		snackbar: snackbarStore,
+		user: persistedReducer
+	},
+	middleware: [thunk]
 });
 
 export type RootState = ReturnType<typeof store.getState>;
