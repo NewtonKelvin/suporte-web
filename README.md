@@ -98,8 +98,15 @@ pnpm tscheck
 - [X] Banco de dados com ORM
 - [X] API's
 - [X] Carregamento de página
-- [ ] Autenticação
+- [x] API de autenticação
+- [ ] Autenticação por rota
 - [ ] Implementar testes automatizados
+- [ ] Implementar dotenv-safe
 - [ ] Skeleton
 - [ ] Ajustar o título/descrição das páginas com title layout
 - [ ] ~~Tema da aplicação no Storybook~~
+
+## Bugs
+
+- [ ] Setando o mesmo tema 3 vezes
+- [ ] Persistir userStore do redux ao recarregar página

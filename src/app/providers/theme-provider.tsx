@@ -12,8 +12,7 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (cookieTheme && cookieTheme !== undefined && cookieTheme !== null)
-      dispatch(setTheme(cookieTheme));
+    if (cookieTheme && cookieTheme !== theme) dispatch(setTheme(cookieTheme));
   });
 
   return (

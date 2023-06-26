@@ -17,7 +17,9 @@ const Input = ({ register, left, rigth, ...rest }: InputType) => {
       )}
       <input
         {...register}
-        className="grow bg-transparent focus:outline-none justify-center text-sm font-medium placeholder:text-opacity-ligth dark:placeholder:text-opacity-dark"
+        className="autofill:caret-primary-ligth dark:autofill:caret-primary-dark autofill:text-fill-primary-ligth autofill:dark:text-fill-primary-dark
+        autofill:shadow-input-ligth dark:autofill:shadow-input-dark
+        grow bg-transparent focus:outline-none justify-center text-sm font-medium placeholder:text-opacity-ligth dark:placeholder:text-opacity-dark"
         {...rest}
       />
       {rigth && (

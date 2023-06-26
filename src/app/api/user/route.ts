@@ -1,5 +1,8 @@
 import { authUserRequest, createUserRequest } from "@/types/user";
 import { Prisma, PrismaClient } from "@prisma/client";
+import "dotenv/config";
+import jwt from "jsonwebtoken";
+import { headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { checkPassword, hashPassword } from "../utils/encrypt";
 
@@ -86,7 +89,7 @@ export async function POST(req: Request) {
   }
 }
 
-export async function GET(req: NextRequest, res: Response) {
+export async function GET(req: NextRequest) {
   const { login, password }: authUserRequest = JSON.parse(
     '{"' +
       decodeURI(
@@ -111,17 +114,30 @@ export async function GET(req: NextRequest, res: Response) {
     );
   }
 
-  const userLogin = await prisma.user.findUnique({
+  const user = await prisma.user.findUnique({
     where: {
       login: login
     },
-    select: { id: true, login: true, password: true }
+    select: { id: true, name: true, login: true, password: true }
   });
 
-  if (userLogin) {
-    const passwordMatch = await checkPassword(password, userLogin.password);
+  if (user) {
+    const passwordMatch = await checkPassword(password, user.password);
     if (passwordMatch) {
-      return NextResponse.json({ error: false, auth: true }, { status: 200 });
+      let secret = process.env.SECRET?.toString() || "";
+      const token = jwt.sign({ userId: user.id }, secret, {
+        expiresIn: 1 * 60 * 60 /* 1 hour */
+      });
+
+      return NextResponse.json(
+        {
+          error: false,
+          auth: true,
+          token,
+          user: { id: user.id, name: user.name, login: user.login }
+        },
+        { status: 200 }
+      );
     } else {
       return NextResponse.json(
         { error: true, message: "Password doesnt match" },
@@ -133,5 +149,20 @@ export async function GET(req: NextRequest, res: Response) {
       { error: true, message: "User not found" },
       { status: 400 }
     );
+  }
+}
+
+export async function HEAD() {
+  const Authorization = headers().get("Authorization");
+  if (Authorization) {
+    let secret = process.env.SECRET?.toString() || "";
+    try {
+      const auth = jwt.verify(Authorization, secret);
+      if (auth) {
+        return NextResponse.json({}, { status: 200 });
+      }
+    } catch (err) {
+      return NextResponse.json({}, { status: 401 });
+    }
   }
 }

@@ -1,4 +1,14 @@
 /** @type {import('tailwindcss').Config} */
+
+let input = {
+  dark: {
+    background: "rgb(38 38 38 / var(--tw-bg-opacity))"
+  },
+  ligth: {
+    background: "rgb(226 232 240 / var(--tw-bg-opacity))"
+  }
+};
+
 module.exports = {
   darkMode: "class",
   content: [
@@ -14,6 +24,10 @@ module.exports = {
         md: "900px",
         lg: "1200px",
         xl: "1536px"
+      },
+      boxShadow: {
+        "input-dark": `0 0 0 30px ${input.dark.background} inset !important;`,
+        "input-ligth": `0 0 0 30px ${input.ligth.background} inset !important;`
       },
       colors: {
         primary: "#0A84FF",
@@ -42,5 +56,5 @@ module.exports = {
       }
     }
   },
-  plugins: []
+  plugins: [require("tailwindcss-text-fill")]
 };

@@ -2,6 +2,7 @@
 import Input from "@/components/input/Input";
 import Logo from "@/components/logo/Logo";
 import CustomSwitch from "@/components/switch/Switch";
+import { userLogin } from "@/redux/auth/slice";
 import { toggleTheme } from "@/redux/cookies/slice";
 import { show } from "@/redux/snackbar/slice";
 import { api } from "@/services/api";
@@ -18,6 +19,7 @@ import { Typography } from "@mui/material";
 import { AxiosError } from "axios";
 import "dotenv/config";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { z } from "zod";
@@ -48,6 +50,8 @@ const Page = () => {
     resolver: zodResolver(loginSchema)
   });
 
+  const router = useRouter();
+
   const submitForm = async ({ login, password }: LoginType) => {
     await api
       .get<authUserResponse>("/user", {
@@ -61,7 +65,18 @@ const Page = () => {
             details: "Redirecting..."
           })
         );
-        reset();
+        if (data.auth) {
+          // Set user auth
+          dispatch(
+            userLogin({
+              auth: data.auth,
+              token: data.token,
+              user: data.user
+            })
+          );
+          reset();
+          router.push("/dashboard");
+        }
       })
       .catch((err: AxiosError<authUserResponse>) => {
         dispatch(

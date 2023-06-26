@@ -1,4 +1,4 @@
 export type CookiesType = {
-  Authorization?: string;
+  nest_token?: string | undefined;
   theme?: "dark" | "ligth";
 };

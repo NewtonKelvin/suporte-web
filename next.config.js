@@ -2,9 +2,18 @@
 require("dotenv").config;
 
 const nextConfig = {
+  async rewrites() {
+    return [
+      {
+        destination: "/auth/dashboard",
+        source: "/dashboard"
+      }
+    ];
+  },
   reactStrictMode: true,
   env: {
-    API_URL: process.env.API_URL
+    API_URL: process.env.API_URL,
+    SECRET: process.env.SECRET
   }
 };
 

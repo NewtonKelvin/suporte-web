@@ -1,3 +1,4 @@
+import userStore from "@/redux/auth/slice";
 import cookieStore from "@/redux/cookies/slice";
 import snackbarStore from "@/redux/snackbar/slice";
 import { configureStore } from "@reduxjs/toolkit";
@@ -5,7 +6,8 @@ import { configureStore } from "@reduxjs/toolkit";
 export const store = configureStore({
   reducer: {
     cookies: cookieStore,
-    snackbar: snackbarStore
+    snackbar: snackbarStore,
+    user: userStore
   }
 });
 

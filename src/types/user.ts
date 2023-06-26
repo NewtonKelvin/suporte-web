@@ -14,4 +14,12 @@ export type authUserResponse = {
   error: boolean;
   auth: boolean;
   message?: string;
+  token?: string;
+  user: authUser;
+};
+
+export type authUser = {
+  id: number;
+  login: string;
+  name: string;
 };
