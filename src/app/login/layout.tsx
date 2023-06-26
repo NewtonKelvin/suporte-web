@@ -20,7 +20,7 @@ export default function RootLayout({
         item
         sm={12}
         md={6}
-        className="w-float h-float rounded-md sm:px-16 sm:py-1 p-2 hidden md:flex flex-col text-justify justify-center my-auto text-black dark:text-white"
+        className="overflow-hidden w-float h-float rounded-md sm:px-16 sm:py-1 p-2 hidden md:flex !flex-col text-justify justify-center my-auto text-black dark:text-white"
       >
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur

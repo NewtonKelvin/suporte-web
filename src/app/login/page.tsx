@@ -91,7 +91,7 @@ const Page = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-between sm:px-5 sm:py-7 p-2 items-center h-full">
+      <div className="flex flex-col w-full justify-between sm:px-5 sm:py-7 p-2 items-center h-full">
         <div className="flex flex-col w-full items-center">
           <CustomSwitch
             deactive={<Flare className="text-yellow-600" fontSize="small" />}

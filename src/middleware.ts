@@ -1,7 +1,6 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-// This function can be marked `async` if using `await` inside
 export const middleware = async (request: NextRequest) => {
   console.log("middleware");
   try {
@@ -14,14 +13,13 @@ export const middleware = async (request: NextRequest) => {
       headers: { Authorization: nest_token }
     });
     if (status === 401)
-      return NextResponse.redirect(new URL("/home", request?.url));
+      return NextResponse.redirect(new URL("/login", request?.url));
   } catch (err) {
     console.log("err", err);
-    return NextResponse.redirect(new URL("/home", request?.url));
+    return NextResponse.redirect(new URL("/login", request?.url));
   }
 };
 
-// See "Matching Paths" below to learn more
 export const config = {
   matcher: ["/auth/:path*", "/dashboard/:path*"]
 };

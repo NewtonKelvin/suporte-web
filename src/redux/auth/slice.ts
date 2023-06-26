@@ -40,7 +40,6 @@ export const userStore = createSlice({
       destroyCookie(undefined, "nest_token", {
         path: "/"
       });
-      state = initialState;
       state.auth = false;
     }
   }

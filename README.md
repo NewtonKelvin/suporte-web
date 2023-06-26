@@ -99,14 +99,9 @@ pnpm tscheck
 - [X] API's
 - [X] Carregamento de página
 - [x] API de autenticação
-- [ ] Autenticação por rota
+- [X] Autenticação por rota
 - [ ] Implementar testes automatizados
 - [ ] Implementar dotenv-safe
 - [ ] Skeleton
 - [ ] Ajustar o título/descrição das páginas com title layout
 - [ ] ~~Tema da aplicação no Storybook~~
-
-## Bugs
-
-- [ ] Setando o mesmo tema 3 vezes
-- [ ] Persistir userStore do redux ao recarregar página
