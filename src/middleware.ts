@@ -2,7 +2,6 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
 export const middleware = async (request: NextRequest) => {
-	console.log("middleware");
 	try {
 		let nest_token = request.cookies.get("nest_token")?.value;
 		if (!nest_token) {

@@ -70,6 +70,14 @@ yarn tscheck
 # or
 pnpm tscheck
 ```
+Open software test:
+```bash
+npm cypress
+# or
+yarn cypress
+# or
+pnpm cypress
+```
 
 ## Packages used
 - [**React:**](https://react.dev/) React lets you build user interfaces out of individual pieces called components. Create your own React components like Thumbnail, LikeButton, and Video. Then combine them into entire screens, pages, and apps.
@@ -88,6 +96,7 @@ pnpm tscheck
 - [**Json web token:**](https://www.npmjs.com/package/jsonwebtoken) An implementation of JSON Web Tokens.
 - [**BCrypt:**](https://www.npmjs.com/package/bcrypt) A library to help you hash passwords.
 - [**Axios:**](https://axios-http.com/ptbr/docs/intro) Axios is a promise-based HTTP Client for node.js and the browser. It is isomorphic (= it can run in the browser and nodejs with the same codebase). On the server-side it uses the native node.js http module, while on the client (browser) it uses XMLHttpRequests.
+- [**Cypress:**](https://www.cypress.io/) Cypress is a next generation front end testing tool built for the modern web. We address the key pain points developers and QA engineers face when testing modern applications.
 
 ## Tarefas
 

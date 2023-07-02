@@ -1,6 +1,17 @@
 {
-  "rules": {
-    "no-unused-vars": "warn"
-  },
-  "extends": ["next/core-web-vitals", "plugin:storybook/recommended"]
+	"rules": {
+		"no-unused-vars": "warn",
+		"cypress/no-assigning-return-values": "error",
+		"cypress/no-unnecessary-waiting": "error",
+		"cypress/assertion-before-screenshot": "warn",
+		"cypress/no-force": "warn",
+		"cypress/no-async-tests": "error",
+		"cypress/no-pause": "error"
+	},
+	"extends": [
+		"next/core-web-vitals",
+		"plugin:storybook/recommended",
+		"plugin:cypress/recommended"
+	],
+	"plugins": ["cypress"]
 }
