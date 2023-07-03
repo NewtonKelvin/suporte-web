@@ -1,11 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 
 let input = {
-	dark: {
-		background: "rgb(38 38 38 / var(--tw-bg-opacity))"
-	},
-	ligth: {
-		background: "rgb(226 232 240 / var(--tw-bg-opacity))"
+	background: {
+		dark: "rgb(29 31 32 / var(--tw-bg-opacity))",
+		ligth: "rgb(226 232 240 / var(--tw-bg-opacity))"
 	}
 };
 
@@ -40,8 +38,8 @@ module.exports = {
 				xl: "1536px"
 			},
 			boxShadow: {
-				"input-dark": `0 0 0 30px ${input.dark.background} inset !important;`,
-				"input-ligth": `0 0 0 30px ${input.ligth.background} inset !important;`
+				"input-dark": `0 0 0 30px ${input.background.dark} inset !important;`,
+				"input-ligth": `0 0 0 30px ${input.background.ligth} inset !important;`
 			},
 			gap: {
 				inner: `${gap.inner}`
@@ -57,7 +55,9 @@ module.exports = {
 				"primary-ligth": "#000000",
 				"primary-dark": "#FFFFFF",
 				"container-ligth": "#FFFFFF",
-				"container-dark": "#151718"
+				"container-dark": "#151718",
+				"input-ligth": input.background.ligth,
+				"input-dark": input.background.dark
 			},
 			backgroundImage: {
 				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

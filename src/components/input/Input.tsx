@@ -9,7 +9,7 @@ interface InputType extends InputHTMLAttributes<HTMLInputElement> {
 
 const Input = ({ register, left, rigth, ...rest }: InputType) => {
 	return (
-		<div className="flex h-8 items-center justify-between gap-2 self-stretch rounded-lg bg-slate-200 px-2 py-1 text-black focus:border-b-2 dark:bg-neutral-800 dark:text-white">
+		<div className="flex h-8 items-center justify-between gap-2 self-stretch rounded-lg bg-input-ligth px-2 py-1 text-black focus:border-b-2 dark:bg-input-dark dark:text-white">
 			{left && (
 				<div className="grow-0 [&>svg]:h-5 [&>svg]:w-5 [&>svg]:fill-opacity-ligth dark:[&>svg]:fill-opacity-dark">
 					{left}
