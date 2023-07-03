@@ -66,6 +66,7 @@
 		"eslint-plugin-cypress": "^2.13.3",
 		"eslint-plugin-storybook": "^0.6.12",
 		"prettier": "2.8.8",
+		"prettier-plugin-tailwindcss": "^0.3.0",
 		"prisma": "^4.16.1",
 		"storybook": "^7.0.22",
 		"webpack-cli": "^5.1.4"

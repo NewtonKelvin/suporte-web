@@ -1,5 +1,5 @@
 require("dotenv").config;
-describe("Validate login form", () => {
+describe("Validate login", () => {
 	beforeEach(() => {
 		cy.intercept({ resourceType: /xhr|fetch/ }, { log: false });
 		Cypress.on("uncaught:exception", (/*err, runnable*/) => {

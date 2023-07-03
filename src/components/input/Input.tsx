@@ -9,21 +9,21 @@ interface InputType extends InputHTMLAttributes<HTMLInputElement> {
 
 const Input = ({ register, left, rigth, ...rest }: InputType) => {
 	return (
-		<div className="flex h-8 py-1 px-2 justify-between rounded-lg gap-2 items-center self-stretch bg-slate-200 dark:bg-neutral-800 text-black dark:text-white focus:border-b-2">
+		<div className="flex h-8 items-center justify-between gap-2 self-stretch rounded-lg bg-slate-200 px-2 py-1 text-black focus:border-b-2 dark:bg-neutral-800 dark:text-white">
 			{left && (
-				<div className="grow-0 [&>svg]:w-5 [&>svg]:h-5 [&>svg]:fill-opacity-ligth dark:[&>svg]:fill-opacity-dark">
+				<div className="grow-0 [&>svg]:h-5 [&>svg]:w-5 [&>svg]:fill-opacity-ligth dark:[&>svg]:fill-opacity-dark">
 					{left}
 				</div>
 			)}
 			<input
 				{...register}
-				className="autofill:caret-primary-ligth dark:autofill:caret-primary-dark autofill:text-fill-primary-ligth autofill:dark:text-fill-primary-dark
-        autofill:shadow-input-ligth dark:autofill:shadow-input-dark
-        grow bg-transparent focus:outline-none justify-center text-sm font-medium placeholder:text-opacity-ligth dark:placeholder:text-opacity-dark"
+				className="grow justify-center bg-transparent text-sm
+        font-medium placeholder:text-opacity-ligth
+        autofill:caret-primary-ligth autofill:shadow-input-ligth autofill:text-fill-primary-ligth focus:outline-none dark:placeholder:text-opacity-dark dark:autofill:caret-primary-dark dark:autofill:shadow-input-dark autofill:dark:text-fill-primary-dark"
 				{...rest}
 			/>
 			{rigth && (
-				<div className="grow-0 [&>svg]:w-5 [&>svg]:h-5 [&>svg]:fill-zinc-600 dark:[&>svg]:fill-stone-600">
+				<div className="grow-0 [&>svg]:h-5 [&>svg]:w-5 [&>svg]:fill-zinc-600 dark:[&>svg]:fill-stone-600">
 					{rigth}
 				</div>
 			)}
