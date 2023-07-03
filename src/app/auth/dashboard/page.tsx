@@ -17,13 +17,13 @@ const Dashboard = () => {
 		<div className="flex flex-col gap-1">
 			<h1>Welcome {user.name || "fail"}!</h1>
 			<Link
-				className="text-opacity-ligth dark:text-opacity-dark hover:text-primary dark:hover:text-primary"
+				className="text-opacity-ligth hover:text-primary dark:text-opacity-dark dark:hover:text-primary"
 				href="/login"
 			>
 				Go back to login
 			</Link>
 			<p
-				className="text-opacity-ligth dark:text-opacity-dark hover:text-red-500 dark:hover:text-red-500 hover:cursor-pointer"
+				className="text-opacity-ligth hover:cursor-pointer hover:text-red-500 dark:text-opacity-dark dark:hover:text-red-500"
 				onClick={logout}
 			>
 				Logout

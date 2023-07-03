@@ -91,8 +91,8 @@ const Page = () => {
 
 	return (
 		<>
-			<div className="flex flex-col w-full justify-between sm:px-5 sm:py-7 p-2 items-center h-full">
-				<div className="flex flex-col w-full items-center">
+			<div className="flex h-full w-full flex-col items-center justify-between p-2 sm:px-5 sm:py-7">
+				<div className="flex w-full flex-col items-center">
 					<CustomSwitch
 						deactive={<Flare className="text-yellow-600" fontSize="small" />}
 						active={<NightsStay className="text-blue-600" fontSize="small" />}
@@ -100,7 +100,7 @@ const Page = () => {
 						onChange={() => dispatch(toggleTheme())}
 					/>
 				</div>
-				<div className="w-full flex flex-col items-center gap-3">
+				<div className="flex w-full flex-col items-center gap-3">
 					<Logo className="fill-primary-ligth stroke-primary-dark dark:fill-primary-dark dark:stroke-primary-ligth" />
 					<div className="text-center">
 						<Typography fontSize={13} fontWeight={"bold"} lineHeight={"96%"}>
@@ -111,13 +111,13 @@ const Page = () => {
 						</Typography>
 					</div>
 					<form
-						className="w-3/4 sm:w-1/2 md:w-3/4 lg:w-1/2 xl:w-1/3 flex flex-col gap-2"
+						className="flex w-3/4 flex-col gap-2 sm:w-1/2 md:w-3/4 lg:w-1/2 xl:w-1/3"
 						onSubmit={handleSubmit(submitForm)}
 						autoComplete="off"
 						noValidate
 					>
 						<div className="flex flex-col">
-							<label className="px-2 py-1 m-0 text-sm font-medium">
+							<label className="m-0 px-2 py-1 text-sm font-medium">
 								Login:
 							</label>
 							<Input
@@ -128,7 +128,7 @@ const Page = () => {
 								placeholder="teste..."
 							/>
 							{errors.login && (
-								<span className="text-red-500 px-2 py-1 m-0 text-xs font-medium">
+								<span className="m-0 px-2 py-1 text-xs font-medium text-red-500">
 									{errors.login.message}
 								</span>
 							)}
@@ -142,14 +142,14 @@ const Page = () => {
 								autoComplete="off"
 							/>
 							{errors.password && (
-								<span className="text-red-500 p-2 m-0 text-xs font-medium">
+								<span className="m-0 p-2 text-xs font-medium text-red-500">
 									{errors.password.message}
 								</span>
 							)}
 						</div>
 
 						<button
-							className="flex justify-center items-center bg-primary hover:bg-blue-600 text-primary-dark rounded-lg h-8"
+							className="flex h-8 items-center justify-center rounded-lg bg-primary text-primary-dark hover:bg-blue-600"
 							type="submit"
 						>
 							Entrar
@@ -157,47 +157,47 @@ const Page = () => {
 						</button>
 						<Link
 							href="/login"
-							className="text-opacity-ligth dark:text-opacity-dark hover:text-primary dark:hover:text-primary text-center font-medium text-xs"
+							className="text-center text-xs font-medium text-opacity-ligth hover:text-primary dark:text-opacity-dark dark:hover:text-primary"
 						>
 							Forgot your password?
 						</Link>
 						<Link
 							href="/login"
-							className="text-opacity-ligth dark:text-opacity-dark hover:text-primary dark:hover:text-primary text-center font-medium text-xs"
+							className="text-center text-xs font-medium text-opacity-ligth hover:text-primary dark:text-opacity-dark dark:hover:text-primary"
 						>
 							Dont have account?
 						</Link>
 					</form>
 				</div>
-				<div className="justify-center items-center gap-6 inline-flex">
-					<div className="text-center text-opacity-ligth dark:text-opacity-dark text-xs font-semibold">
+				<div className="inline-flex items-center justify-center gap-6">
+					<div className="text-center text-xs font-semibold text-opacity-ligth dark:text-opacity-dark">
 						<Link
 							href="#"
-							className="text-opacity-ligth dark:text-opacity-dark hover:text-primary dark:hover:text-primary text-center font-medium text-xs"
+							className="text-center text-xs font-medium text-opacity-ligth hover:text-primary dark:text-opacity-dark dark:hover:text-primary"
 						>
 							Instagram
 						</Link>
 					</div>
-					<div className="text-center text-opacity-ligth dark:text-opacity-dark text-xs font-semibold">
+					<div className="text-center text-xs font-semibold text-opacity-ligth dark:text-opacity-dark">
 						<Link
 							href="#"
-							className="text-opacity-ligth dark:text-opacity-dark hover:text-primary dark:hover:text-primary text-center font-medium text-xs"
+							className="text-center text-xs font-medium text-opacity-ligth hover:text-primary dark:text-opacity-dark dark:hover:text-primary"
 						>
 							Twitter
 						</Link>
 					</div>
-					<div className="text-center text-opacity-ligth dark:text-opacity-dark text-xs font-semibold">
+					<div className="text-center text-xs font-semibold text-opacity-ligth dark:text-opacity-dark">
 						<Link
 							href="#"
-							className="text-opacity-ligth dark:text-opacity-dark hover:text-primary dark:hover:text-primary text-center font-medium text-xs"
+							className="text-center text-xs font-medium text-opacity-ligth hover:text-primary dark:text-opacity-dark dark:hover:text-primary"
 						>
 							Contact
 						</Link>
 					</div>
-					<div className="text-center text-opacity-ligth dark:text-opacity-dark text-xs font-semibold">
+					<div className="text-center text-xs font-semibold text-opacity-ligth dark:text-opacity-dark">
 						<Link
 							href="#"
-							className="text-opacity-ligth dark:text-opacity-dark hover:text-primary dark:hover:text-primary text-center font-medium text-xs"
+							className="text-center text-xs font-medium text-opacity-ligth hover:text-primary dark:text-opacity-dark dark:hover:text-primary"
 						>
 							Support
 						</Link>
