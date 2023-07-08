@@ -101,7 +101,7 @@ const Page = () => {
 					/>
 				</div>
 				<div className="flex w-full flex-col items-center gap-3">
-					<Logo className="fill-primary-light dark:stroke-primary-light stroke-primary-dark dark:fill-primary-dark" />
+					<Logo className="fill-primary-light stroke-primary-dark dark:fill-primary-dark dark:stroke-primary-light" />
 					<div className="text-center">
 						<Typography fontSize={13} fontWeight={"bold"} lineHeight={"96%"}>
 							Bem-vindo
@@ -157,47 +157,47 @@ const Page = () => {
 						</button>
 						<Link
 							href="/login"
-							className="text-opacity-light text-center text-xs font-medium hover:text-primary dark:text-opacity-dark dark:hover:text-primary"
+							className="text-center text-xs font-medium text-opacity-light hover:text-primary dark:text-opacity-dark dark:hover:text-primary"
 						>
 							Forgot your password?
 						</Link>
 						<Link
 							href="/login"
-							className="text-opacity-light text-center text-xs font-medium hover:text-primary dark:text-opacity-dark dark:hover:text-primary"
+							className="text-center text-xs font-medium text-opacity-light hover:text-primary dark:text-opacity-dark dark:hover:text-primary"
 						>
 							Dont have account?
 						</Link>
 					</form>
 				</div>
 				<div className="inline-flex items-center justify-center gap-6">
-					<div className="text-opacity-light text-center text-xs font-semibold dark:text-opacity-dark">
+					<div className="text-center text-xs font-semibold text-opacity-light dark:text-opacity-dark">
 						<Link
 							href="#"
-							className="text-opacity-light text-center text-xs font-medium hover:text-primary dark:text-opacity-dark dark:hover:text-primary"
+							className="text-center text-xs font-medium text-opacity-light hover:text-primary dark:text-opacity-dark dark:hover:text-primary"
 						>
 							Instagram
 						</Link>
 					</div>
-					<div className="text-opacity-light text-center text-xs font-semibold dark:text-opacity-dark">
+					<div className="text-center text-xs font-semibold text-opacity-light dark:text-opacity-dark">
 						<Link
 							href="#"
-							className="text-opacity-light text-center text-xs font-medium hover:text-primary dark:text-opacity-dark dark:hover:text-primary"
+							className="text-center text-xs font-medium text-opacity-light hover:text-primary dark:text-opacity-dark dark:hover:text-primary"
 						>
 							Twitter
 						</Link>
 					</div>
-					<div className="text-opacity-light text-center text-xs font-semibold dark:text-opacity-dark">
+					<div className="text-center text-xs font-semibold text-opacity-light dark:text-opacity-dark">
 						<Link
 							href="#"
-							className="text-opacity-light text-center text-xs font-medium hover:text-primary dark:text-opacity-dark dark:hover:text-primary"
+							className="text-center text-xs font-medium text-opacity-light hover:text-primary dark:text-opacity-dark dark:hover:text-primary"
 						>
 							Contact
 						</Link>
 					</div>
-					<div className="text-opacity-light text-center text-xs font-semibold dark:text-opacity-dark">
+					<div className="text-center text-xs font-semibold text-opacity-light dark:text-opacity-dark">
 						<Link
 							href="#"
-							className="text-opacity-light text-center text-xs font-medium hover:text-primary dark:text-opacity-dark dark:hover:text-primary"
+							className="text-center text-xs font-medium text-opacity-light hover:text-primary dark:text-opacity-dark dark:hover:text-primary"
 						>
 							Support
 						</Link>

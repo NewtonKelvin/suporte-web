@@ -12,7 +12,7 @@ export default function RootLayout({
 				item
 				sm={12}
 				md={6}
-				className="bg-container-light flex h-float w-float flex-col rounded-md p-2 text-black dark:bg-container-dark dark:text-white xs:w-full sm:px-16 sm:py-1"
+				className="flex h-float w-float flex-col rounded-md bg-container-light p-2 text-black dark:bg-container-dark dark:text-white xs:w-full sm:px-16 sm:py-1"
 			>
 				{children}
 			</Grid>
