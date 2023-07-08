@@ -12,7 +12,7 @@ type Story = StoryObj<typeof Switch>;
 
 export const Default: Story = {
 	args: {
-		deactive: "Ligth",
+		deactive: "Light",
 		active: "Dark"
 	}
 };

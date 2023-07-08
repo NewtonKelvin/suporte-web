@@ -2,12 +2,12 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { setCookie } from "nookies";
 
 type cookieStoreType = {
-	theme: "dark" | "ligth" | string;
+	theme: "dark" | "light" | string;
 	isDark: boolean;
 };
 
 const initialState: cookieStoreType = {
-	theme: "ligth",
+	theme: "light",
 	isDark: false
 };
 
@@ -16,7 +16,7 @@ export const cookieStore = createSlice({
 	initialState,
 	reducers: {
 		toggleTheme: (state) => {
-			const newTheme = state.theme === "dark" ? "ligth" : "dark";
+			const newTheme = state.theme === "dark" ? "light" : "dark";
 			setCookie(null, "theme", newTheme, {
 				path: "/"
 			});

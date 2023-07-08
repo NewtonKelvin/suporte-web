@@ -1,26 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 
-let input = {
-	background: {
-		dark: "rgb(29 31 32 / var(--tw-bg-opacity))",
-		ligth: "rgb(226 232 240 / var(--tw-bg-opacity))"
-	}
-};
-
-let gap = {
-	outter: ".25rem", // 4px
-	inner: ".25rem" // 4px
-};
-
-let size = {
-	navbar: {
-		heigth: "3rem"
-	},
-	sidebar: {
-		width: "18.5rem"
-	}
-};
-
 module.exports = {
 	darkMode: "class",
 	content: [
@@ -38,26 +17,28 @@ module.exports = {
 				xl: "1536px"
 			},
 			boxShadow: {
-				"input-dark": `0 0 0 30px ${input.background.dark} inset !important;`,
-				"input-ligth": `0 0 0 30px ${input.background.ligth} inset !important;`
-			},
-			gap: {
-				inner: `${gap.inner}`
+				"input-dark":
+					"0 0 0 30px var(--input-background-dark) inset !important;",
+				"input-light":
+					"0 0 0 30px var(--input-background-light) inset !important;"
 			},
 			padding: {
-				outter: `${gap.outter}`
+				outter: "var(--page-padding-outter)"
+			},
+			gap: {
+				inner: "var(--page-gap-inner)"
 			},
 			colors: {
 				primary: "#0A84FF",
-				"opacity-ligth": "#808080",
+				"opacity-light": "#808080",
 				"opacity-dark": "#5a5a5a",
 				white: "#D9D9D9",
-				"primary-ligth": "#000000",
+				"primary-light": "#000000",
 				"primary-dark": "#FFFFFF",
-				"container-ligth": "#FFFFFF",
-				"container-dark": "#151718",
-				"input-ligth": input.background.ligth,
-				"input-dark": input.background.dark
+				"container-light": "var(--container-background-light)",
+				"container-dark": "var(--container-background-dark)",
+				"input-light": "var(--input-background-light)",
+				"input-dark": "var(--input-background-dark)"
 			},
 			backgroundImage: {
 				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -67,20 +48,20 @@ module.exports = {
 				"background-light": `url('${process.env.BASE_URL}/images/background_light.jpg')`
 			},
 			width: {
-				float: `calc(100vw - (2*${gap.outer}))`,
-				sidebar: `${size.sidebar.width}`,
-				content: `calc(100% - ${size.sidebar.width})`
+				float: "calc(100vw - (2 * var(--page-padding-outter)))",
+				sidebar: "var(--sidebar-width)",
+				content: "calc(100% - var(--sidebar-width))"
 			},
 			height: {
-				navbar: `${size.navbar.heigth}`,
-				float: `calc(100vh - (2*${gap.outer}))`,
-				"float-nav": `calc(100% - ${size.navbar.heigth} - ${gap.inner})`
+				navbar: "var(--navbar-height)",
+				float: "calc(100vh - (2 * var(--page-padding-outter)))",
+				"float-nav": "calc(100% - var(--navbar-height) - var(--page-gap-inner))"
 			},
 			margin: {
-				sidebar: `${size.sidebar.width}`
+				sidebar: "var(--sidebar-width)"
 			},
 			translate: {
-				sidebar: `${size.sidebar.width}`
+				sidebar: "var(--sidebar-width)"
 			}
 		}
 	},
