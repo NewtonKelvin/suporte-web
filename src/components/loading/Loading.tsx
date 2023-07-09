@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./loading.css";
 
 const Loading = () => {
 	let phrases = [
@@ -29,7 +28,7 @@ const Loading = () => {
 			setCurrentPhraseIndex((prevIndex) => prevIndex + 1);
 			setCurrentLetterIndex(0);
 		}
-	});
+	}, []);
 	return (
 		<div className="flex h-screen w-screen flex-col items-center justify-center bg-gradient-to-br from-slate-900 to-gray-900 text-white">
 			<div className="w-auto text-left">
