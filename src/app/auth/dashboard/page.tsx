@@ -28,7 +28,7 @@ const Dashboard = () => {
 			>
 				Logout
 			</p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur libero
+			{/* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur libero
 			velit, sagittis in mattis sed, porta fringilla nisl. Aliquam erat
 			volutpat. Praesent eu urna in eros lacinia mattis quis vel elit. Donec
 			imperdiet condimentum quam ac blandit. Sed lacinia et enim sit amet
@@ -230,7 +230,7 @@ const Dashboard = () => {
 			ultricies velit fringilla tristique. Phasellus nec est egestas, mattis
 			quam vitae, imperdiet erat. Praesent et accumsan metus. In sagittis
 			rhoncus facilisis. Donec quis commodo justo. Suspendisse nulla erat,
-			rhoncus nec pharetra vel, tristique non lacus.
+			rhoncus nec pharetra vel, tristique non lacus. */}
 		</div>
 	);
 };
