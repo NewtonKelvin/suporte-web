@@ -5,10 +5,18 @@
 @layer components {}
 
 :root {
+  --primary: #0A84FF;
+  --white: #D9D9D9;
   --container-background-light: #FFFFFF;
   --container-background-dark: #151718;
-  --input-background-dark: rgb(29 31 32);
+
   --input-background-light: rgb(226 232 240);
+  --input-background-dark: rgb(29 31 32);
+
+  --text-opacity-light: #808080;
+  --text-opacity-dark: #5a5a5a;
+  --text-light: #000000;
+  --text-dark: #FFFFFF;
 
   --page-padding-outter: .25rem;
   --page-gap-inner: .25rem;

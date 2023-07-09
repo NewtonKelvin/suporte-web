@@ -29,12 +29,12 @@ module.exports = {
 				inner: "var(--page-gap-inner)"
 			},
 			colors: {
-				primary: "#0A84FF",
-				"opacity-light": "#808080",
-				"opacity-dark": "#5a5a5a",
-				white: "#D9D9D9",
-				"primary-light": "#000000",
-				"primary-dark": "#FFFFFF",
+				primary: "var(--primary)",
+				white: "var(--white)",
+				"opacity-light": "var(--text-opacity-light)",
+				"opacity-dark": "var(--text-opacity-dark)",
+				"primary-light": "var(--text-light)",
+				"primary-dark": "var(--text-dark)",
 				"container-light": "var(--container-background-light)",
 				"container-dark": "var(--container-background-dark)",
 				"input-light": "var(--input-background-light)",
@@ -44,8 +44,8 @@ module.exports = {
 				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
 				"gradient-conic":
 					"conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-				"background-dark": `url('${process.env.BASE_URL}/images/background_dark.jpg')`,
-				"background-light": `url('${process.env.BASE_URL}/images/background_light.jpg')`
+				"image-dark": `url('${process.env.BASE_URL}/images/background_dark.jpg')`,
+				"image-light": `url('${process.env.BASE_URL}/images/background_light.jpg')`
 			},
 			width: {
 				float: "calc(100vw - (2 * var(--page-padding-outter)))",

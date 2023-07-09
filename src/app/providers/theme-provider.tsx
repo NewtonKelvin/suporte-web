@@ -18,7 +18,7 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<div className={theme}>
 			<div
-				className={`h-screen w-screen bg-background-light bg-cover bg-center bg-no-repeat p-outter transition-all duration-700 ease-in-out dark:bg-background-dark`}
+				className={`dark:bg-image-dark bg-image-light h-screen w-screen bg-cover bg-center bg-no-repeat p-outter transition-all duration-700 ease-in-out`}
 			>
 				{children}
 			</div>
