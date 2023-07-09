@@ -1,4 +1,6 @@
+import { NavigationEvents } from "@/components/navigationEvents";
 import { Poppins } from "next/font/google";
+import { Suspense } from "react";
 import "../style/global.css";
 import "../style/nprogress.css";
 import GlobalProvider from "./providers/store-provider";
@@ -36,6 +38,9 @@ export default function RootLayout({
 			</head>
 			<body>
 				<GlobalProvider>{children}</GlobalProvider>
+				<Suspense fallback={null}>
+					<NavigationEvents />
+				</Suspense>
 			</body>
 		</html>
 	);
