@@ -1,30 +1,22 @@
 import { RootState } from "@/app/store";
+import { setMenu } from "@/redux/sidebar/slice";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-	Assessment,
-	BugReport,
-	DarkMode,
-	Dashboard,
-	Inbox,
-	LightMode,
-	Logout,
-	Search,
-	SupervisedUserCircle
-} from "@mui/icons-material";
+import { DarkMode, LightMode, Logout, Search } from "@mui/icons-material";
 import Image from "next/image";
 import Link from "next/link";
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Input from "../input/Input";
 import { SearchType, searchSchema } from "../navbar/Navbar";
 
-type menuItemType = {
-	title: string;
-	icon: React.ReactNode;
-	active: boolean;
-	link: string;
-};
+import {
+	Assessment,
+	BugReport,
+	Dashboard,
+	Inbox,
+	SupervisedUserCircle
+} from "@mui/icons-material";
 
 const buttonClass = {
 	default: "flex h-8 w-full items-center gap-2 rounded-lg p-2",
@@ -38,39 +30,6 @@ const iconClass = {
 	deactive: ""
 };
 
-let menuItens: menuItemType[] = [
-	{
-		title: "Dashboard",
-		link: "/dashboard",
-		icon: <Dashboard className="h-4" />,
-		active: true
-	},
-	{
-		title: "Tickets",
-		link: "/tickets",
-		icon: <BugReport className="h-4" />,
-		active: false
-	},
-	{
-		title: "Users",
-		link: "/users",
-		icon: <SupervisedUserCircle className="h-4" />,
-		active: false
-	},
-	{
-		title: "Reports",
-		link: "/reports",
-		icon: <Assessment className="h-4" />,
-		active: false
-	},
-	{
-		title: "Messages",
-		link: "/messages",
-		icon: <Inbox className="h-4" />,
-		active: false
-	}
-];
-
 interface SidebarType extends HTMLAttributes<HTMLDivElement> {
 	sideOpen: Boolean;
 }
@@ -78,6 +37,9 @@ interface SidebarType extends HTMLAttributes<HTMLDivElement> {
 const Sidebar = ({ sideOpen, ...rest }: SidebarType) => {
 	const { user } = useSelector((state: RootState) => state.user);
 	const { isDark } = useSelector((state: RootState) => state.cookies);
+	const { items } = useSelector((state: RootState) => state.sidebar);
+
+	const dispatch = useDispatch();
 	const { register, handleSubmit, reset } = useForm<SearchType>({
 		resolver: zodResolver(searchSchema)
 	});
@@ -86,6 +48,46 @@ const Sidebar = ({ sideOpen, ...rest }: SidebarType) => {
 		console.log("data", data);
 		reset();
 	};
+
+	useEffect(() => {
+		dispatch(
+			setMenu({
+				items: [
+					{
+						title: "Dashboard",
+						link: "/dashboard",
+						icon: <Dashboard className="h-4" />,
+						active: false
+					},
+					{
+						title: "Tickets",
+						link: "/tickets",
+						icon: <BugReport className="h-4" />,
+						active: false
+					},
+					{
+						title: "Users",
+						link: "/users",
+						icon: <SupervisedUserCircle className="h-4" />,
+						active: false
+					},
+					{
+						title: "Reports",
+						link: "/reports",
+						icon: <Assessment className="h-4" />,
+						active: false
+					},
+					{
+						title: "Messages",
+						link: "/messages",
+						icon: <Inbox className="h-4" />,
+						active: false
+					}
+				]
+			})
+		);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	return (
 		<div {...rest}>
@@ -121,7 +123,7 @@ const Sidebar = ({ sideOpen, ...rest }: SidebarType) => {
 			)}
 			<div className="flex h-full flex-col justify-between gap-1">
 				<div>
-					{menuItens.map((item, index) => {
+					{items.map((item, index) => {
 						return (
 							<Link href={item.link} key={index}>
 								<button

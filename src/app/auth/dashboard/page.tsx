@@ -1,8 +1,10 @@
 "use client";
 import { RootState } from "@/app/store";
 import { userLogout } from "@/redux/auth/slice";
+import { setActiveMenu } from "@/redux/sidebar/slice";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const Dashboard = () => {
@@ -10,6 +12,11 @@ const Dashboard = () => {
 	const { socket } = useSelector((state: RootState) => state.socket);
 	const router = useRouter();
 	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(setActiveMenu("Dashboard"));
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	const logout = () => {
 		socket.disconnect();

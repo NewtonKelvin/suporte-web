@@ -1,5 +1,6 @@
 "use client";
 import { RootState } from "@/app/store";
+import { setActiveMenu } from "@/redux/sidebar/slice";
 import { setOnlineUsers } from "@/redux/socket/slice";
 import { UserType } from "@/types/socket";
 import { ArrowForward } from "@mui/icons-material";
@@ -19,6 +20,7 @@ const Messages = () => {
 	};
 
 	useEffect(() => {
+		dispatch(setActiveMenu("Messages"));
 		socket.on("getMessage", ({ sender, message }) => {
 			console.log(`From ${sender}: ${message}`);
 		});
