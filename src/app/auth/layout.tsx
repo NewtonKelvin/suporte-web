@@ -2,8 +2,9 @@
 import Navbar from "@/components/navbar/Navbar";
 import Sidebar from "@/components/sidebar/Sidebar";
 import { Drawer, Grid } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { io as ClientIO } from "socket.io-client";
 import { RootState } from "../store";
 
 export default function RootLayout({
@@ -14,6 +15,35 @@ export default function RootLayout({
 	const [sideOpen, setSideOpen] = useState(false);
 	const toggleSide = () => setSideOpen(!sideOpen);
 	const theme = useSelector((state: RootState) => state.cookies.theme);
+
+	useEffect((): any => {
+		const socket = new (ClientIO as any)(process.env.NEXT_PUBLIC_SITE_URL, {
+			path: "/api/socket/io",
+			addTrailingSlash: false
+		});
+
+		// log socket connection
+		socket.on("connect", () => {
+			console.log("SOCKET CONNECTED!", socket.id);
+			socket.emit("listOnlineUsers", "online");
+		});
+		socket.on("userServerConnection", (id: string) => {
+			console.log(`a user connected (client ${id})`);
+			socket.emit("listOnlineUsers", "online");
+		});
+		socket.on("userServerDisconnection", (id: string) => {
+			console.log(`a user disconnected (client ${id})`);
+			socket.emit("listOnlineUsers", "online");
+		});
+		socket.on("sendNotif", (msg: string) => {
+			console.log(msg);
+		});
+		socket.emit("joinRoom", "online");
+		return () => {
+			socket.emit("leaveRoom", "online");
+			socket.disconnect();
+		};
+	}, []);
 
 	return (
 		<Grid container className="flex h-full w-full flex-col gap-inner">
