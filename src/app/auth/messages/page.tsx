@@ -48,6 +48,14 @@ const Messages = () => {
 	return (
 		<div className="flex flex-col">
 			<button
+				onClick={() => socket.emit("getOnlineUsers")}
+				className="flex h-8 items-center justify-center rounded-lg bg-primary px-2 text-primary-dark hover:bg-blue-600"
+				type="submit"
+			>
+				Update online users
+				<ArrowForward className="h-4" />
+			</button>
+			<button
 				onClick={sendMessage}
 				className="flex h-8 items-center justify-center rounded-lg bg-primary px-2 text-primary-dark hover:bg-blue-600"
 				type="submit"

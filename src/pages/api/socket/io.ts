@@ -36,6 +36,7 @@ const io = async (req: NextApiRequest, res: NextApiResponseServerIO) => {
 			addTrailingSlash: false
 		});
 		io.on("connection", (socket) => {
+			io.to("online").emit("sendUserList", rooms.online);
 			socket.on("newUser", async (userName) => {
 				await socket.join("online");
 				addNewUser({ userName: userName, socketId: socket.id });
@@ -43,6 +44,9 @@ const io = async (req: NextApiRequest, res: NextApiResponseServerIO) => {
 			});
 			socket.on("sendMessage", ({ username, message }: socketChatType) => {
 				io.to("online").emit("getMessage", { username, message });
+			});
+			socket.on("getOnlineUsers", () => {
+				io.to("online").emit("sendUserList", rooms.online);
 			});
 			socket.on("disconnect", () => {
 				removeUser(socket.id);
