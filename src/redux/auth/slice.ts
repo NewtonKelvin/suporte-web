@@ -26,7 +26,7 @@ export const userStore = createSlice({
 	initialState,
 	reducers: {
 		userLogin: (state, action: PayloadAction<userStoreType>) => {
-			setCookie(null, "nest_token", action.payload.token || "", {
+			setCookie(null, "web_token", action.payload.token || "", {
 				path: "/",
 				maxAge: 1 * 60 * 60 /* 1 Hour */
 			});
@@ -37,7 +37,7 @@ export const userStore = createSlice({
 			state.user.login = action.payload.user?.login;
 		},
 		userLogout: (state) => {
-			destroyCookie(undefined, "nest_token", {
+			destroyCookie(undefined, "web_token", {
 				path: "/"
 			});
 			state.auth = false;

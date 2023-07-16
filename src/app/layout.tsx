@@ -6,7 +6,7 @@ import "../style/nprogress.css";
 import GlobalProvider from "./providers/store-provider";
 
 export const metadata = {
-	title: "Nest suporte"
+	title: "Suporte web"
 };
 
 const poppins = Poppins({
@@ -26,6 +26,7 @@ export default function RootLayout({
 			<head>
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
 				<link rel="icon" href="/icon.svg" sizes="any" />
+				<link rel="shortcut icon" href="/icon.svg" sizes="any" />
 				<link
 					rel="preconnect"
 					href="https://fonts.gstatic.com"

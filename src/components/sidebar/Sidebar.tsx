@@ -116,7 +116,7 @@ const Sidebar = ({ sideOpen, ...rest }: SidebarType) => {
 						<br />
 					</span>
 					<span className="font-semibold leading-tight text-opacity-light dark:text-opacity-dark">
-						Nest Alphaville
+						Unidade Alphaville
 					</span>
 				</div>
 			</div>

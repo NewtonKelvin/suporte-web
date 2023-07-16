@@ -3,13 +3,13 @@ import { NextResponse } from "next/server";
 
 export const middleware = async (request: NextRequest) => {
 	try {
-		let nest_token = request.cookies.get("nest_token")?.value;
-		if (!nest_token) {
+		let web_token = request.cookies.get("web_token")?.value;
+		if (!web_token) {
 			throw new Error("Unauthorized!");
 		}
 		const { status } = await fetch("http://localhost:3000/api/user", {
 			method: "head",
-			headers: { Authorization: nest_token }
+			headers: { Authorization: web_token }
 		});
 		if (status === 401)
 			return NextResponse.redirect(new URL("/login", request?.url));

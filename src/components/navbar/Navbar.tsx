@@ -10,13 +10,14 @@ import {
 	MenuOpen,
 	Search
 } from "@mui/icons-material";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { HTMLAttributes } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { z } from "zod";
+import Logotipo from "../../../public/icon.svg";
 import Input from "../input/Input";
-import Logo from "../logo/Logo";
 
 export const searchSchema = z.object({
 	search: z
@@ -55,8 +56,9 @@ const Navbar = ({ sideOpen, toggleSide, ...rest }: NavbarType) => {
 
 	return (
 		<div {...rest}>
-			<div className="flex flex-row items-center">
-				<Logo className="h-7 fill-primary-light stroke-primary-dark dark:fill-primary-dark dark:stroke-primary-light" />{" "}
+			<div className="flex flex-row items-center gap-4">
+				{/* <Logo className="h-7 fill-primary-light stroke-primary-dark dark:fill-primary-dark dark:stroke-primary-light" />{" "} */}
+				<Image src={Logotipo} width={28} height={28} alt="Logotipo KN" />
 				<span className="font-bold">SUPORTE WEB</span>
 			</div>
 

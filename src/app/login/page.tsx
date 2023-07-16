@@ -1,6 +1,5 @@
 "use client";
 import Input from "@/components/input/Input";
-import Logo from "@/components/logo/Logo";
 import CustomSwitch from "@/components/switch/Switch";
 import { userLogin } from "@/redux/auth/slice";
 import { toggleTheme } from "@/redux/cookies/slice";
@@ -18,11 +17,13 @@ import {
 import { Typography } from "@mui/material";
 import { AxiosError } from "axios";
 import "dotenv/config";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { z } from "zod";
+import Logotipo from "../../../public/icon.svg";
 import { RootState } from "../store";
 
 const loginSchema = z.object({
@@ -101,13 +102,13 @@ const Page = () => {
 					/>
 				</div>
 				<div className="flex w-full flex-col items-center gap-3">
-					<Logo className="fill-primary-light stroke-primary-dark dark:fill-primary-dark dark:stroke-primary-light" />
+					<Image src={Logotipo} width={54} height={54} alt="Logotipo KN" />
 					<div className="text-center">
 						<Typography fontSize={13} fontWeight={"bold"} lineHeight={"96%"}>
 							Bem-vindo
 						</Typography>
 						<Typography fontSize={24} fontWeight={"bold"} lineHeight={"96%"}>
-							Suporte Nest
+							Suporte Web
 						</Typography>
 					</div>
 					<form
