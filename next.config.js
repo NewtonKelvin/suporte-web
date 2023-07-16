@@ -15,6 +15,10 @@ const nextConfig = {
 			{
 				destination: "/auth/dashboard",
 				source: "/dashboard"
+			},
+			{
+				destination: "/auth/messages",
+				source: "/messages"
 			}
 		];
 	},

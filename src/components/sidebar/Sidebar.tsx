@@ -1,8 +1,13 @@
+import { RootState } from "@/app/store";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
 	Assessment,
 	BugReport,
+	DarkMode,
 	Dashboard,
+	Inbox,
+	LightMode,
+	Logout,
 	Search,
 	SupervisedUserCircle
 } from "@mui/icons-material";
@@ -10,6 +15,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { HTMLAttributes } from "react";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 import Input from "../input/Input";
 import { SearchType, searchSchema } from "../navbar/Navbar";
 
@@ -18,6 +24,18 @@ type menuItemType = {
 	icon: React.ReactNode;
 	active: boolean;
 	link: string;
+};
+
+const buttonClass = {
+	default: "flex h-8 w-full items-center gap-2 rounded-lg p-2",
+	active: "bg-primary text-slate-100 hover:bg-blue-600 hover:text-slate-50",
+	deactive:
+		"bg-transparent text-opacity-light hover:bg-input-light hover:text-primary-light dark:text-opacity-dark dark:hover:bg-input-dark dark:hover:text-primary-dark"
+};
+const iconClass = {
+	default: "max-w-4 max-h-4",
+	active: "",
+	deactive: ""
 };
 
 let menuItens: menuItemType[] = [
@@ -44,6 +62,12 @@ let menuItens: menuItemType[] = [
 		link: "/reports",
 		icon: <Assessment className="h-4" />,
 		active: false
+	},
+	{
+		title: "Messages",
+		link: "/messages",
+		icon: <Inbox className="h-4" />,
+		active: false
 	}
 ];
 
@@ -52,6 +76,8 @@ interface SidebarType extends HTMLAttributes<HTMLDivElement> {
 }
 
 const Sidebar = ({ sideOpen, ...rest }: SidebarType) => {
+	const { user } = useSelector((state: RootState) => state.user);
+	const { isDark } = useSelector((state: RootState) => state.cookies);
 	const { register, handleSubmit, reset } = useForm<SearchType>({
 		resolver: zodResolver(searchSchema)
 	});
@@ -73,7 +99,7 @@ const Sidebar = ({ sideOpen, ...rest }: SidebarType) => {
 				/>
 				<div className="w-full">
 					<span className="font-semibold leading-snug text-primary-light dark:text-primary-dark">
-						Kelvin Newton
+						{user.name}
 						<br />
 					</span>
 					<span className="font-semibold leading-tight text-opacity-light dark:text-opacity-dark">
@@ -93,24 +119,48 @@ const Sidebar = ({ sideOpen, ...rest }: SidebarType) => {
 					</form>
 				</div>
 			)}
-			<div className="flex flex-col gap-1">
-				{menuItens.map((item, index) => {
-					return (
-						<Link href={item.link} key={index}>
-							<button
-								className={`flex h-8 w-full items-center gap-2 rounded-lg ${
-									item.active
-										? "bg-primary text-slate-100 hover:bg-blue-600 hover:text-slate-50"
-										: "bg-transparent text-opacity-light hover:bg-input-light hover:text-primary-light dark:text-opacity-dark dark:hover:bg-input-dark dark:hover:text-primary-dark"
-								} p-2`}
-								type="submit"
-							>
-								{item.icon}
-								{item.title}
-							</button>
-						</Link>
-					);
-				})}
+			<div className="flex h-full flex-col justify-between gap-1">
+				<div>
+					{menuItens.map((item, index) => {
+						return (
+							<Link href={item.link} key={index}>
+								<button
+									className={`${buttonClass.default} ${
+										item.active ? buttonClass.active : buttonClass.deactive
+									}`}
+									type="submit"
+								>
+									{item.icon}
+									{item.title}
+								</button>
+							</Link>
+						);
+					})}
+				</div>
+				<div>
+					<Link href="#">
+						<button
+							className={`${buttonClass.default} ${buttonClass.deactive}`}
+							type="submit"
+						>
+							{isDark ? (
+								<LightMode className={iconClass.default} />
+							) : (
+								<DarkMode className={iconClass.default} />
+							)}
+							Toggle theme
+						</button>
+					</Link>
+					<Link href="#">
+						<button
+							className={`${buttonClass.default} ${buttonClass.deactive}`}
+							type="submit"
+						>
+							<Logout className={iconClass.default} />
+							Logout
+						</button>
+					</Link>
+				</div>
 			</div>
 		</div>
 	);

@@ -9,3 +9,19 @@ export type NextApiResponseServerIO = NextApiResponse & {
 		};
 	};
 };
+
+//Server
+export type UserType = {
+	userName: string;
+	socketId: string;
+};
+export type RoomsType = {
+	online: UserType[];
+};
+
+export type AddNewUserType = {
+	// eslint-disable-next-line no-unused-vars
+	(args: UserType): void;
+};
+
+//Client

@@ -1,6 +1,7 @@
 import userStore from "@/redux/auth/slice";
 import cookieStore from "@/redux/cookies/slice";
 import snackbarStore from "@/redux/snackbar/slice";
+import socketStore from "@/redux/socket/slice";
 import { configureStore } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
 
@@ -17,7 +18,8 @@ export const store = configureStore({
 	reducer: {
 		cookies: cookieStore,
 		snackbar: snackbarStore,
-		user: persistedReducer
+		user: persistedReducer,
+		socket: socketStore
 	},
 	middleware: [thunk]
 });

@@ -33,9 +33,10 @@ interface NavbarType extends HTMLAttributes<HTMLDivElement> {
 }
 
 const Navbar = ({ sideOpen, toggleSide, ...rest }: NavbarType) => {
-	const router = useRouter();
 	const dispatch = useDispatch();
+	const router = useRouter();
 	const { isDark } = useSelector((state: RootState) => state.cookies);
+	const { socket } = useSelector((state: RootState) => state.socket);
 
 	const { register, handleSubmit, reset } = useForm<SearchType>({
 		resolver: zodResolver(searchSchema)
@@ -47,6 +48,7 @@ const Navbar = ({ sideOpen, toggleSide, ...rest }: NavbarType) => {
 	};
 
 	const logout = () => {
+		socket.disconnect();
 		dispatch(userLogout());
 		router.push("/login");
 	};

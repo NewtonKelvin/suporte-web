@@ -1,9 +1,10 @@
 "use client";
 import Navbar from "@/components/navbar/Navbar";
 import Sidebar from "@/components/sidebar/Sidebar";
+import { setSocket } from "@/redux/socket/slice";
 import { Drawer, Grid } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { io as ClientIO } from "socket.io-client";
 import { RootState } from "../store";
 
@@ -15,35 +16,26 @@ export default function RootLayout({
 	const [sideOpen, setSideOpen] = useState(false);
 	const toggleSide = () => setSideOpen(!sideOpen);
 	const theme = useSelector((state: RootState) => state.cookies.theme);
+	const { user } = useSelector((state: RootState) => state.user);
+	const { socket } = useSelector((state: RootState) => state.socket);
+	const dispatch = useDispatch();
 
 	useEffect((): any => {
-		const socket = new (ClientIO as any)(process.env.NEXT_PUBLIC_SITE_URL, {
-			path: "/api/socket/io",
-			addTrailingSlash: false
-		});
-
-		// log socket connection
-		socket.on("connect", () => {
-			console.log("SOCKET CONNECTED!", socket.id);
-			socket.emit("listOnlineUsers", "online");
-		});
-		socket.on("userServerConnection", (id: string) => {
-			console.log(`a user connected (client ${id})`);
-			socket.emit("listOnlineUsers", "online");
-		});
-		socket.on("userServerDisconnection", (id: string) => {
-			console.log(`a user disconnected (client ${id})`);
-			socket.emit("listOnlineUsers", "online");
-		});
-		socket.on("sendNotif", (msg: string) => {
-			console.log(msg);
-		});
-		socket.emit("joinRoom", "online");
-		return () => {
-			socket.emit("leaveRoom", "online");
-			socket.disconnect();
-		};
+		dispatch(
+			setSocket(
+				new (ClientIO as any)(process.env.NEXT_PUBLIC_SITE_URL, {
+					path: "/api/socket/io",
+					addTrailingSlash: false
+				})
+			)
+		);
+		return () => socket.disconnect();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+
+	useEffect(() => {
+		socket.emit("newUser", user.name);
+	}, [socket, user]);
 
 	return (
 		<Grid container className="flex h-full w-full flex-col gap-inner">
@@ -55,8 +47,8 @@ export default function RootLayout({
 			>
 				<Sidebar
 					sideOpen={sideOpen}
-					className="h-full w-sidebar flex-col bg-container-light p-2 text-black
-        transition-transform dark:bg-container-dark dark:text-white sm:block"
+					className="flex h-full w-sidebar flex-col bg-container-light p-2 text-black
+        transition-transform dark:bg-container-dark dark:text-white sm:flex"
 				/>
 			</Drawer>
 			<Navbar
@@ -69,7 +61,7 @@ export default function RootLayout({
 				<Sidebar
 					sideOpen={sideOpen}
 					className="sm:none h-with-navbar hidden w-sidebar flex-col rounded-md bg-container-light p-2 text-black
-        transition-transform dark:bg-container-dark dark:text-white sm:block "
+        transition-transform dark:bg-container-dark dark:text-white sm:flex"
 				/>
 				<Grid
 					item
