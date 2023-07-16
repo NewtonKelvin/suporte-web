@@ -4,12 +4,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { DarkMode, LightMode, Logout, Search } from "@mui/icons-material";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { HTMLAttributes, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import Input from "../input/Input";
 import { SearchType, searchSchema } from "../navbar/Navbar";
 
+import { userLogout } from "@/redux/auth/slice";
+import { toggleTheme } from "@/redux/cookies/slice";
 import {
 	Assessment,
 	BugReport,
@@ -35,9 +38,11 @@ interface SidebarType extends HTMLAttributes<HTMLDivElement> {
 }
 
 const Sidebar = ({ sideOpen, ...rest }: SidebarType) => {
+	const router = useRouter();
 	const { user } = useSelector((state: RootState) => state.user);
 	const { isDark } = useSelector((state: RootState) => state.cookies);
 	const { items } = useSelector((state: RootState) => state.sidebar);
+	const { socket } = useSelector((state: RootState) => state.socket);
 
 	const dispatch = useDispatch();
 	const { register, handleSubmit, reset } = useForm<SearchType>({
@@ -88,6 +93,12 @@ const Sidebar = ({ sideOpen, ...rest }: SidebarType) => {
 		);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+
+	const logout = () => {
+		socket.disconnect();
+		dispatch(userLogout());
+		router.push("/login");
+	};
 
 	return (
 		<div {...rest}>
@@ -144,6 +155,7 @@ const Sidebar = ({ sideOpen, ...rest }: SidebarType) => {
 						<button
 							className={`${buttonClass.default} ${buttonClass.deactive}`}
 							type="submit"
+							onClick={() => dispatch(toggleTheme())}
 						>
 							{isDark ? (
 								<LightMode className={iconClass.default} />
@@ -157,6 +169,7 @@ const Sidebar = ({ sideOpen, ...rest }: SidebarType) => {
 						<button
 							className={`${buttonClass.default} ${buttonClass.deactive}`}
 							type="submit"
+							onClick={logout}
 						>
 							<Logout className={iconClass.default} />
 							Logout

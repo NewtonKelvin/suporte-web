@@ -25,7 +25,10 @@ export default function RootLayout({
 			setSocket(
 				new (ClientIO as any)(process.env.NEXT_PUBLIC_SITE_URL, {
 					path: "/api/socket/io",
-					addTrailingSlash: false
+					addTrailingSlash: false,
+					cors: {
+						origin: process.env.NEXT_PUBLIC_SITE_URL
+					}
 				})
 			)
 		);

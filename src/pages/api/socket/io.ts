@@ -1,3 +1,4 @@
+import { socketChatType } from "@/redux/socket/slice";
 import {
 	AddNewUserType,
 	NextApiResponseServerIO,
@@ -40,8 +41,8 @@ const io = async (req: NextApiRequest, res: NextApiResponseServerIO) => {
 				addNewUser({ userName: userName, socketId: socket.id });
 				io.to("online").emit("sendUserList", rooms.online);
 			});
-			socket.on("sendMessage", ({ sender, message }) => {
-				io.to("online").emit("getMessage", { sender, message });
+			socket.on("sendMessage", ({ username, message }: socketChatType) => {
+				io.to("online").emit("getMessage", { username, message });
 			});
 			socket.on("disconnect", () => {
 				removeUser(socket.id);

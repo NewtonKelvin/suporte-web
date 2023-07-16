@@ -6,9 +6,15 @@ type socketUserType = {
 	socketId: string;
 	userName: string;
 };
+export type socketChatType = {
+	username: string;
+	message: string;
+	date: Date;
+};
 type socketStoreType = {
 	socket: Socket;
 	online: socketUserType[];
+	chat: socketChatType[];
 };
 
 const initialState: socketStoreType = {
@@ -16,7 +22,8 @@ const initialState: socketStoreType = {
 		path: "/api/socket/io",
 		addTrailingSlash: false
 	}),
-	online: []
+	online: [],
+	chat: []
 };
 
 export const socketStore = createSlice({
@@ -26,13 +33,21 @@ export const socketStore = createSlice({
 		setSocket: (state, action: PayloadAction<Socket>) => {
 			state.socket = action.payload;
 			state.online = state.online;
+			state.chat = state.chat;
 		},
 		setOnlineUsers: (state, action: PayloadAction<socketUserType[]>) => {
-			state.socket = state.socket;
 			state.online = action.payload;
+			state.socket = state.socket;
+			state.chat = state.chat;
+		},
+		addChatMessage: (state, action: PayloadAction<socketChatType>) => {
+			state.chat = [...state.chat, action.payload];
+			state.socket = state.socket;
+			state.online = state.online;
 		}
 	}
 });
 
-export const { setOnlineUsers, setSocket } = socketStore.actions;
+export const { setOnlineUsers, setSocket, addChatMessage } =
+	socketStore.actions;
 export default socketStore.reducer;
